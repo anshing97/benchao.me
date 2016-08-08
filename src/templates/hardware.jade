@@ -1,0 +1,12 @@
+extends ./layouts/layout.jade
+
+block layoutSettings
+    - var pageTitle = 'Hardware'
+    - var containerClass = 'longform'
+
+block content
+    include ./includes/hardware/intro.jade
+    include ./includes/hardware/ethicon.jade
+    include ./includes/hardware/fridge.jade
+    include ./includes/hardware/washer.jade
+    include ./includes/hardware/phone.jade

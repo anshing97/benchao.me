@@ -1,0 +1,27 @@
+extends ../../layouts/section.jade
+
+mixin social-link(icon, url, sentence)
+    li
+        a(href="#{url}")
+            span(class="icon #{icon}")
+                case icon
+                    when 'codepen'
+                        include ../../../assets/icons/codepen.svg
+                    when 'instagram'
+                        include ../../../assets/icons/instagram.svg
+                    when 'tumblr'
+                        include ../../../assets/icons/tumblr.svg
+                    when 'linkedin'
+                        include ../../../assets/icons/linkedin.svg
+            = sentence
+
+block title
+    :markdown
+        # Else where
+
+block content
+    ul.social-links
+        +social-link('codepen','http://codepen.io/anshing97/','Where I experiment')
+        +social-link('instagram','http://instagram.com/anshing97/','A day in life')
+        +social-link('tumblr','http://www.lintless.com/','Sketches from way past')
+        +social-link('linkedin','https://www.linkedin.com/in/benchao','Obligatory resume')
