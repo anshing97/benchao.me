@@ -1,0 +1,18 @@
+{
+  "name": "benchao.me",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "author": "Ben Chao <anshing97@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "bourbon": "^4.2.7",
+    "bourbon-neat": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-watch": "^4.3.9",
+    "neat": "^1.2.2"
+  }
+}

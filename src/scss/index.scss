@@ -1,0 +1,24 @@
+$max-width: 900px;
+$white: #fff;
+
+@import '../../node_modules/bourbon/app/assets/stylesheets/bourbon';
+@import '../../node_modules/bourbon-neat/app/assets/stylesheets/neat';
+
+body {
+  background-color: $white;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.row {
+  @include row; 
+}
+
+.title {
+  @include span-columns(3);
+}
+
+.content {
+  @include span-columns(9);
+}
