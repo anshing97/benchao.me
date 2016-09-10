@@ -6,15 +6,14 @@ $max-width: 900px;
 @import '../../node_modules/bourbon-neat/app/assets/stylesheets/_neat';
 
 // colors
-$color-bg: #ffffff;
+$color-bg: #fffffc;
 $color-text: #292929;
 $color-text-light: tint($color-text, 70%);
-$color-emphasis: #e74c3c;
+$color-emphasis: #ff3824;
 $color-emphasis-light: tint($color-emphasis, 40%);
 $color-divider: #dddddd;
-
 $color-hero-bg: #000000;
-$color-hero-text: #ffffff;
+$color-hero-text: #fffffc;
 
 // transition
 $transition-speed: 0.2s;
@@ -28,21 +27,20 @@ html {
     font-size: 16px;
 }
 body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background-color: $color-bg;
     margin: 5rem 1rem;
     color: $color-text;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     @include media($small-screen) {
         margin: 2rem 1rem;
     }
 }
+// general layout
 .container {
     max-width: $max-width;
     margin: 0 auto;
 }
-
-// general layout
 .row {
     @include row;
 }
@@ -148,13 +146,13 @@ p {
         color: $color-emphasis;
         text-decoration: none;
         position: relative;
-        text-shadow: 0.05rem 0.05rem 0 white,
-                     -0.05rem 0.05rem 0 white,
-                     0.05rem 0.1rem 0 white,
-                     -0.05rem 0.1rem 0 white;
+        text-shadow: 0.05rem 0.05rem 0 $color-bg,
+                     -0.05rem 0.05rem 0 $color-bg,
+                     0.05rem 0.1rem 0 $color-bg,
+                     -0.05rem 0.1rem 0 $color-bg;
         &:after {
             content: '';
-            @include transition(all $transition-speed ease-in);
+            @include transition(background-color $transition-speed ease-in);
             @include position(absolute, null 0px 0px 0px);
             background-color: $color-emphasis;
             height: 1px;
@@ -187,24 +185,6 @@ p {
 // social links
 .social-links {
     display: inline-block;
-    li {
-        margin-bottom: 0.75rem;
-        a {
-            @include transition(color $transition-speed ease-in);
-            text-decoration: none;
-            color: $color-text;
-            &:hover {
-                color: $color-text;
-                .icon-color {
-                    fill: $color-text;
-                }
-            }
-        }
-    }
-    .icon {
-        @include position(relative, 0.5rem null null null);
-        margin-right: 0.75rem;
-    }
     &:hover {
         .icon-color {
             fill: $color-text-light;
@@ -212,6 +192,25 @@ p {
         a {
             color: $color-text-light;
         }
+    }
+    li {
+        margin-bottom: 0.75rem;
+    }
+    a {
+        @include transition(color $transition-speed ease-in);
+        text-decoration: none;
+        color: $color-text;
+        padding: 0.5rem 0;
+        &:hover {
+            color: $color-text;
+            .icon-color {
+                fill: $color-text;
+            }
+        }
+    }
+    .icon {
+        @include position(relative, 0.5rem null null null);
+        margin-right: 0.75rem;
     }
 }
 
@@ -223,8 +222,8 @@ p {
     img {
         @include transition(opacity $transition-speed ease-in)
         @include backface-visibility(hidden);
-        max-width:100%;
-        max-height:100%;
+        max-width: 100%;
+        max-height: 100%;
     }
     .centered {
         @include position(absolute, 50% null null 50%);
