@@ -36,7 +36,7 @@ gulp.task('css', function() {
         require('cssnext'),
         require('precss')
     ];
-    return gulp.src('src/scss/**/*.css')
+    return gulp.src('src/scss/**/*.scss')
         .pipe(postcss(processors, {syntax: scss}))
         .pipe(gulp.dest('build/css'));
 });
