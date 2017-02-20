@@ -7,7 +7,10 @@ var gulp        = require('gulp'),
     stylelint   = require('stylelint'),
     reporter    = require('postcss-reporter'),
     sequence    = require('run-sequence'),
-    merge       = require('merge-stream');
+    merge       = require('merge-stream'),
+    autoprefix  = require('autoprefixer'),
+    mqpacker    = require('css-mqpacker'),
+    cssnano     = require('cssnano');
 
 gulp.task('clean', function () {
     return gulp.src('build/', {read: false})
@@ -31,28 +34,22 @@ gulp.task('assets', function(){
   return merge(png, jpg);
 });
 
-
-gulp.task("lint", function() {
-    var processors = [
-        stylelint(),
-        reporter({
-            clearMessages: true,
-            throwError: true
-        })
-    ];
-    var scss = require('postcss-scss');
-
-    return gulp.src('src/scss/**/*.scss')
-        .pipe(postcss(processors,{syntax:scss}));
-});
-
 gulp.task('css', function() {
-    processors = [
-        require('autoprefixer'),
-        require('css-mqpacker'),
-        require('cssnano')
-    ];
+    var scss = require('postcss-scss'),
+        linters = [
+            stylelint(),
+            reporter({
+                clearAllMessages: true
+            })
+        ],
+        processors = [
+            autoprefix,
+            mqpacker,
+            cssnano
+        ];
+
     return gulp.src('src/scss/**/*.scss')
+        .pipe(postcss(linters,{syntax:scss}))
         .pipe(sass())
         .pipe(postcss(processors))
         .pipe(gulp.dest('build/css'));
@@ -66,7 +63,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/scss/**/*.scss', ['lint','css']);
+    gulp.watch('src/scss/**/*.scss', ['css']);
     gulp.watch('src/templates/**/*.jade', ['html']);
     gulp.watch('src/assets/**/*', ['assets']);
 });
@@ -74,7 +71,6 @@ gulp.task('watch', function() {
 
 gulp.task('default', function() {
     sequence('clean',
-             'lint',
              ['html', 'css', 'assets'],
              'connect',
              'watch');
