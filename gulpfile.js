@@ -1,8 +1,9 @@
 var gulp        = require('gulp'),
     clean       = require('gulp-clean'),
     jade        = require('gulp-jade'),
-    sass        = require('gulp-sass'),
+    postcss     = require('gulp-postcss'),
     connect     = require('gulp-connect'),
+    scss        = require('postcss-scss'),
     sequence    = require('run-sequence'),
     merge       = require('merge-stream');
 
@@ -29,8 +30,14 @@ gulp.task('assets', function(){
 });
 
 gulp.task('css', function() {
-    return gulp.src('src/scss/**/*.scss')
-        .pipe(sass())
+    var processors = [
+        require('postcss-strip-inline-comments'),
+        require('autoprefixer'),
+        require('cssnext'),
+        require('precss')
+    ];
+    return gulp.src('src/scss/**/*.css')
+        .pipe(postcss(processors, {syntax: scss}))
         .pipe(gulp.dest('build/css'));
 });
 
