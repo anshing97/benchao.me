@@ -1,10 +1,16 @@
 var gulp        = require('gulp'),
     clean       = require('gulp-clean'),
     jade        = require('gulp-jade'),
-    sass        = require('gulp-sass'),
+    postcss     = require('gulp-postcss'),
     connect     = require('gulp-connect'),
+    sass        = require('gulp-sass'),
+    stylelint   = require('stylelint'),
+    reporter    = require('postcss-reporter'),
     sequence    = require('run-sequence'),
-    merge       = require('merge-stream');
+    merge       = require('merge-stream'),
+    autoprefix  = require('autoprefixer'),
+    mqpacker    = require('css-mqpacker'),
+    cssnano     = require('cssnano');
 
 gulp.task('clean', function () {
     return gulp.src('build/', {read: false})
@@ -29,8 +35,23 @@ gulp.task('assets', function(){
 });
 
 gulp.task('css', function() {
+    var scss = require('postcss-scss'),
+        linters = [
+            stylelint(),
+            reporter({
+                clearAllMessages: true
+            })
+        ],
+        processors = [
+            autoprefix,
+            mqpacker,
+            cssnano
+        ];
+
     return gulp.src('src/scss/**/*.scss')
+        .pipe(postcss(linters,{syntax:scss}))
         .pipe(sass())
+        .pipe(postcss(processors))
         .pipe(gulp.dest('build/css'));
 });
 
