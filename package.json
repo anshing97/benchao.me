@@ -5,8 +5,11 @@
   "author": "Ben Chao <anshing97@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^6.7.3",
-    "cssnext": "^1.8.4",
+    "autoprefixer": "^6.7.4",
+    "bourbon": "^4.2.7",
+    "bourbon-neat": "^1.8.0",
+    "css-mqpacker": "^5.0.1",
+    "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-connect": "^5.0.0",
@@ -15,10 +18,13 @@
     "gulp-postcss": "^6.3.0",
     "gulp-sass": "^2.3.2",
     "merge-stream": "^1.0.0",
+    "postcss-reporter": "^3.0.0",
     "postcss-scss": "^0.4.1",
-    "postcss-strip-inline-comments": "^0.1.5",
-    "precss": "^1.4.0",
     "reset-css": "^2.0.20160720",
-    "run-sequence": "^1.2.2"
+    "run-sequence": "^1.2.2",
+    "stylelint": "^7.9.0",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-order": "^0.3.0",
+    "stylelint-scss": "^1.4.3"
   }
 }

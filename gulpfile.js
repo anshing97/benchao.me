@@ -3,7 +3,9 @@ var gulp        = require('gulp'),
     jade        = require('gulp-jade'),
     postcss     = require('gulp-postcss'),
     connect     = require('gulp-connect'),
-    scss        = require('postcss-scss'),
+    sass        = require('gulp-sass'),
+    stylelint   = require('stylelint'),
+    reporter    = require('postcss-reporter'),
     sequence    = require('run-sequence'),
     merge       = require('merge-stream');
 
@@ -29,15 +31,30 @@ gulp.task('assets', function(){
   return merge(png, jpg);
 });
 
-gulp.task('css', function() {
+
+gulp.task("lint", function() {
     var processors = [
-        require('postcss-strip-inline-comments'),
+        stylelint(),
+        reporter({
+            clearMessages: true,
+            throwError: true
+        })
+    ];
+    var scss = require('postcss-scss');
+
+    return gulp.src('src/scss/**/*.scss')
+        .pipe(postcss(processors,{syntax:scss}));
+});
+
+gulp.task('css', function() {
+    processors = [
         require('autoprefixer'),
-        require('cssnext'),
-        require('precss')
+        require('css-mqpacker'),
+        require('cssnano')
     ];
     return gulp.src('src/scss/**/*.scss')
-        .pipe(postcss(processors, {syntax: scss}))
+        .pipe(sass())
+        .pipe(postcss(processors))
         .pipe(gulp.dest('build/css'));
 });
 
@@ -49,7 +66,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/scss/**/*.scss', ['css']);
+    gulp.watch('src/scss/**/*.scss', ['lint','css']);
     gulp.watch('src/templates/**/*.jade', ['html']);
     gulp.watch('src/assets/**/*', ['assets']);
 });
@@ -57,6 +74,7 @@ gulp.task('watch', function() {
 
 gulp.task('default', function() {
     sequence('clean',
+             'lint',
              ['html', 'css', 'assets'],
              'connect',
              'watch');
