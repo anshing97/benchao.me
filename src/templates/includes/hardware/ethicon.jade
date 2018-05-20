@@ -1,26 +1,25 @@
-extends ../../layouts/pictures.jade
+extends ../../layouts/collage.jade
 
-block overview
-    :markdown
-        #### Endosurgery Equipment
+block intro
+  :markdown
+    #### Endosurgery Equipment
 
-        One of my first project at Smart Design was to prototype [surgery equipment UI](https://vimeo.com/50313470) for Ethicon. We designed a  clean user interface and worked with [Ben Rubin](https://twitter.com/earstudio) for the sound design. However, we weren't satisfied just handing over specs and sound clips. We wanted our clients to experience the whole thing. We ended up rewiring a bunch of endosurgery equipment, hooked them onto an Arduino, and prototyped a bunch of surgery workflows.
+    One of my first project at Smart Design was to prototype [surgery equipment UI](https://vimeo.com/50313470) for Ethicon. We designed a  clean user interface and worked with [Ben Rubin](https://twitter.com/earstudio) for the sound design. However, we weren't satisfied just handing over specs and sound clips. We wanted our clients to experience the whole thing. We ended up rewiring a bunch of endosurgery equipment, hooked them onto an Arduino, and prototyped a bunch of surgery workflows.
 
-block pictures
-    ul
-        li.block
-            img(src='assets/hardware/eth-1.jpg')
-            p.caption The prototype is connected to a vessel sealer. It has a high and low thermal setting.
-        li.block
-            img(src='assets/hardware/eth-2.jpg')
-            p.caption Pressing the lower knob triggers the low setting.
-        li.block
-            img(src='assets/hardware/eth-3.jpg')
-            p.caption And the higher knob triggers the high one.
-        li.block
-            img(src='assets/hardware/eth-4.jpg')
-            p.caption The prototype recognizes which endosurgery equipment is connected. It's loading the workflow for a different sealer.
-        li.block
-            img(src='assets/hardware/eth-5.jpg')
-            p.caption It’s ready! This sealer has a different UI, sound design, and interaction model.
+block collage
+  li
+    img(src='assets/hardware/eth-1.jpg')
+    p.caption The prototype is connected to a vessel sealer. It has a high and low thermal setting.
+  li
+    img(src='assets/hardware/eth-2.jpg')
+    p.caption Pressing the lower knob triggers the low setting.
+  li
+    img(src='assets/hardware/eth-3.jpg')
+    p.caption And the higher knob triggers the high one.
+  li
+    img(src='assets/hardware/eth-4.jpg')
+    p.caption The prototype recognizes which endosurgery equipment is connected. It's loading the workflow for a different sealer.
+  li
+    img(src='assets/hardware/eth-5.jpg')
+    p.caption It’s ready! This sealer has a different UI, sound design, and interaction model.
 

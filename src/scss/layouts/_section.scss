@@ -1,0 +1,22 @@
+.l-section {
+  display: flex;
+  margin-bottom: 6rem;
+
+  @media #{$small-screen} {
+    display: block;
+  }
+}
+
+.l-section__title {
+  flex: 0 0 24%;
+}
+
+.l-section__content {
+  flex: 1;
+  margin-top: 0.5rem;
+  margin-left: $gutter;
+
+  @media #{$small-screen} {
+    margin-left: 0;
+  }
+}

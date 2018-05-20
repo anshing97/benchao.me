@@ -1,38 +1,37 @@
 {
-      "extends": "stylelint-config-standard",
-      "plugins": [
-            "stylelint-scss",
-            "stylelint-order"
-      ],
-      "rules": {
-            "indentation": 4,
-            "max-empty-lines": 1,
-            "max-nesting-depth": [3, {
-                  "ignore": ["blockless-at-rules"]
-            }],
-            "at-rule-empty-line-before": null,
-            "selector-pseudo-element-colon-notation": "single",
-            "declaration-empty-line-before": "never",
-            "rule-empty-line-before": [ "always-multi-line", {
-                  "except": [ "first-nested" ],
-                  "ignore": [ "after-comment", "inside-block"]
-            }],
-            "scss/at-import-no-partial-leading-underscore": true,
-            "scss/at-mixin-argumentless-call-parentheses": "never",
-            "scss/double-slash-comment-whitespace-inside": "always",
-            "order/declaration-block-order": [
-                  "custom-properties",
-                  "dollar-variables",
-                  "at-rules",
-                  "declarations",
-                  "rules",
-                  {
-                        "type": "at-rule",
-                        "name": "include",
-                        "parameter": "media",
-                        "hasBlock": true
-                  }
-            ]
-
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": 2,
+    "max-empty-lines": 1,
+    "max-nesting-depth": [3, {
+      "ignore": ["blockless-at-rules"]
+    }],
+    "at-rule-empty-line-before": null,
+    "selector-pseudo-element-colon-notation": "single",
+    "declaration-empty-line-before": "never",
+    "rule-empty-line-before": [ "always-multi-line", {
+      "except": [ "first-nested" ],
+      "ignore": [ "after-comment", "inside-block"]
+    }],
+    "scss/at-import-no-partial-leading-underscore": true,
+    "scss/at-mixin-argumentless-call-parentheses": "never",
+    "scss/double-slash-comment-whitespace-inside": "always",
+    "order/declaration-block-order": [
+      "custom-properties",
+      "dollar-variables",
+      "at-rules",
+      "declarations",
+      "rules",
+      {
+        "type": "at-rule",
+        "name": "media",
+        "hasBlock": true
       }
+    ]
+
+  }
 }
