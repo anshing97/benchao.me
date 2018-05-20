@@ -1,0 +1,48 @@
+.icon {
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+.icon__color {
+  transition: fill $transition-speed ease-in;
+}
+
+.icon-links {
+  display: inline-block;
+
+  &:hover {
+    .icon__color {
+      fill: $color-text-light;
+    }
+
+    a {
+      color: $color-text-light;
+    }
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+  }
+
+  a {
+    transition: color $transition-speed ease-in;
+    text-decoration: none;
+    color: $color-text;
+    padding: 0.5rem 0;
+
+    &:hover {
+      color: $color-text;
+
+      .icon__color {
+        fill: $color-text;
+      }
+    }
+  }
+
+  .icon {
+    @include position(relative, 0.5rem null null null);
+    margin-right: 0.75rem;
+  }
+}

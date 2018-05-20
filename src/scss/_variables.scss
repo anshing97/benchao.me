@@ -1,0 +1,21 @@
+// spacing
+$max-width: 900px;
+$column: percentage(1/12);
+$gutter: 20px;
+
+// colors
+$color-bg: #fffffc;
+$color-text: #292929;
+$color-text-light: tint($color-text, 70%);
+$color-emphasis: #ff3824;
+$color-emphasis-light: tint($color-emphasis, 40%);
+$color-divider: #ddd;
+$color-hero-bg: #000;
+$color-hero-text: #fffffc;
+
+// transition
+$transition-speed: 0.2s;
+
+// media query
+$small-screen: "screen and (max-width: 640px)";
+

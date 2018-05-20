@@ -1,0 +1,15 @@
+.l-intro {
+  display: flex;
+
+  @media #{$small-screen} {
+    display: block;
+  }
+}
+
+.l-intro__content {
+  flex: 0 0 $column*9;
+}
+
+.l-intro__content--bordered {
+  border-bottom: 1px dotted $color-divider;
+}

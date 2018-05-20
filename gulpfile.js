@@ -13,14 +13,14 @@ var gulp        = require('gulp'),
     cssnano     = require('cssnano');
 
 gulp.task('clean', function () {
-    return gulp.src('build/', {read: false})
-        .pipe(clean());
+  return gulp.src('build/', {read: false})
+    .pipe(clean());
 });
 
 gulp.task('html', function() {
-    return gulp.src('src/templates/*.jade')
-        .pipe(jade())
-        .pipe(gulp.dest('build/'));
+  return gulp.src('src/templates/*.jade')
+    .pipe(jade())
+    .pipe(gulp.dest('build/'));
 });
 
 gulp.task('assets', function(){
@@ -35,43 +35,43 @@ gulp.task('assets', function(){
 });
 
 gulp.task('css', function() {
-    var scss = require('postcss-scss'),
-        linters = [
-            stylelint(),
-            reporter({
-                clearAllMessages: true
-            })
-        ],
-        processors = [
-            autoprefix,
-            mqpacker,
-            cssnano
-        ];
+  var scss = require('postcss-scss'),
+      linters = [
+          stylelint(),
+          reporter({
+              clearAllMessages: true
+          })
+      ],
+      processors = [
+          autoprefix,
+          mqpacker,
+          cssnano
+      ];
 
-    return gulp.src('src/scss/**/*.scss')
-        .pipe(postcss(linters,{syntax:scss}))
-        .pipe(sass())
-        .pipe(postcss(processors))
-        .pipe(gulp.dest('build/css'));
+  return gulp.src('src/scss/**/*.scss')
+    .pipe(postcss(linters,{syntax:scss}))
+    .pipe(sass())
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('connect', function() {
-    connect.server({
-        root: 'build/',
-        livereload: true
-    });
+  connect.server({
+    root: 'build/',
+    livereload: true
+  });
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/scss/**/*.scss', ['css']);
-    gulp.watch('src/templates/**/*.jade', ['html']);
-    gulp.watch('src/assets/**/*', ['assets']);
+  gulp.watch('src/scss/**/*.scss', ['css']);
+  gulp.watch('src/templates/**/*.jade', ['html']);
+  gulp.watch('src/assets/**/*', ['assets']);
 });
 
 
 gulp.task('default', function() {
-    sequence('clean',
-             ['html', 'css', 'assets'],
-             'connect',
-             'watch');
+  sequence('clean',
+           ['html', 'css', 'assets'],
+           'connect',
+           'watch');
 });

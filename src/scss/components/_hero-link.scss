@@ -1,0 +1,37 @@
+.hero-link {
+  background: $color-hero-bg;
+  position: relative;
+  margin-bottom: 1rem;
+
+  img {
+    backface-visibility: hidden;
+    transition: opacity $transition-speed ease-in;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  a:hover {
+    h3 {
+      opacity: 1;
+    }
+
+    img {
+      opacity: 0.4;
+    }
+  }
+
+  @media #{$small-screen} {
+    &:first-child {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+.hero-link__text {
+  @include position(absolute, 50% null null 50%);
+  transform: translate(-50%, -50%);
+  transition: opacity $transition-speed ease-in;
+  white-space: nowrap;
+  color: $color-hero-text;
+  opacity: 0;
+}
